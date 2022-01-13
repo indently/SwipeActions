@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @State private var nameList = ["Mario", "Luigi", "Toad", "Peach", "Bowser"]
     
-    
     var body: some View {
         VStack {
             List {
@@ -19,7 +18,7 @@ struct ContentView: View {
                         .padding()
                         .swipeActions {
                             Button(role: .destructive) {
-                                withAnimation(.easeInOut(duration: 2)) {
+                                withAnimation {
                                     removeName(name: name)
                                 }
                             } label: {
@@ -42,12 +41,11 @@ struct ContentView: View {
                             }
                             .tint(.green)
                         }
-                        
-            
                 }
             }
         }
     }
+    
     func removeName(name: String) {
         if let index = nameList.firstIndex(of: name) {
             nameList.remove(at: index)
